@@ -85,5 +85,44 @@ namespace FractionExercise
 
             return a.Multiply(b.Invert());
         }
+
+        public static Fraction operator +(Fraction left, Fraction right)
+        {
+            var numerator = left.Numerator * right.Denominator + left.Denominator * right.Numerator;
+            var denominator = left.Denominator * right.Denominator;
+            return new Fraction(numerator, denominator);
+        }
+
+        public static Fraction operator -(Fraction left, Fraction right)
+        {
+            var numerator = left.Numerator * right.Denominator - left.Denominator * right.Numerator;
+            var denominator = left.Denominator * right.Denominator;
+            return new Fraction(numerator, denominator);
+        }
+
+        public static Fraction operator -(Fraction fraction)
+        {
+            return new Fraction(-fraction.Numerator, fraction.Denominator);
+        }
+
+        public static Fraction operator *(Fraction left, Fraction right)
+        {
+            return new Fraction(left.Numerator * right.Numerator, left.Denominator * right.Denominator);
+        }
+
+        public static Fraction operator /(Fraction left, Fraction right)
+        {
+            return new Fraction(left.Numerator * right.Denominator, left.Denominator * right.Numerator);
+        }
+
+        public static bool operator ==(Fraction left, Fraction right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Fraction left, Fraction right)
+        {
+            return !(right == left);
+        }
     }
 }
